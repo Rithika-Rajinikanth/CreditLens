@@ -25,9 +25,9 @@ tags:
   <b>A Production-Grade, Multi-Agent Loan Underwriting Cockpit Powered by Tri-Tier AI, In-Memory Hybrid RAG, NetworkX Graph Forensics, TreeSHAP Explainability, and Dual-Horizon Financial P&L Engineering.</b>
 </p>
 
-[🎮 The Story Simulator](#-the-wall-street-cyber-bank-simulator) •
-[🏛️ System Architecture](#-system-architecture--diagrams) •
-[📊 Financial P&L & Metrics](#-system-metrics--prudential-ratios) •
+[🎮 Storytelling Process Flow](#-the-underwriters-gauntlet-storytelling-process-flow) •
+[🏛️ System Architecture](#%EF%B8%8F-system-architecture--diagrams) •
+[📊 Financial Metrics & P&L](#-system-metrics--prudential-ratios) •
 [🧪 70/70 Test Suite](#-the-7070-automated-test-suite) •
 [⚔️ Competitive Comparison](#%EF%B8%8F-competitive-matrix-creditlens-vs-the-industry) •
 [🚀 Quick Start](#-quick-start)
@@ -36,47 +36,106 @@ tags:
 
 </div>
 
-## 🎮 The Wall Street Cyber-Bank Simulator
-> *How does an autonomous neo-bank process thousands of borrowers simultaneously without losing a single dollar to fraud, crashing from rate hikes, or getting sued by regulators?*
+## 🎮 The Underwriter's Gauntlet: Storytelling Process Flow
+> *How does an autonomous neo-bank evaluate 5,000 applicants simultaneously without losing a single dollar to fraud, crashing during a Federal Reserve rate shock, or getting fined by regulators?*
 
+Welcome to **The Wall Street Cyber-Bank Simulator**. You have just taken the reins as **Chief Underwriting Officer (CUO)** of *Nova Bank*. The digital branch doors have just opened, and **5,000 borrowers are storming your servers at the exact same millisecond**. 
+
+In traditional legacy banking, this creates a week-long paper queue. Human underwriters get overwhelmed, fatigue causes multi-million-dollar mistakes, and fraudsters slip through unnoticed. 
+
+In **CreditLens**, every single borrower is treated through an autonomous, **non-blocking parallel gameplay gauntlet**. Below is the complete step-by-step storytelling process flow explaining how every project concept operates in real time:
+
+```mermaid
+flowchart TD
+    subgraph S1 ["🏰 Level 1: The Parallel Rush Hour (Concurrency Arena)"]
+        A1["5,000 Applicants Storm Bank Doors<br/>(Simultaneous Credit Requests)"] --> A2["Asynchronous ASGI Coroutine Engine<br/>(Starlette + Uvicorn Event Loop)"]
+        A2 --> A3["⚡ NON-BLOCKING CONCURRENCY<br/>1,000 to 3,000 Applicants Evaluated in Parallel<br/>Zero Queue Latency • Sub-5ms Turnaround"]
+    end
+
+    subgraph S2 ["🔍 Level 2: The ML Oracle & SHAP Laser (Credit Risk Scoring)"]
+        A3 --> B1["XGBoost 2.0 Probability Engine<br/>Computes 12-Month Default Probability (PD)"]
+        B1 --> B2["TreeSHAP Laser Vision<br/>Decomposes Exact Dollar Drivers:<br/>FICO, DTI, Credit Utilization, Inquiries"]
+    end
+
+    subgraph S3 ["🕸️ Level 3: The Fraud Labyrinth (Syndicate Defense)"]
+        B2 --> C1["NetworkX Neural Identity Graph<br/>Scans for Shared VoIPs, Phone Collisions, & Shell Employers"]
+        C1 --> C2{"Synthetic Fraud Score > 0.70?<br/>(Boss 1 Attack!)"}
+        C2 -->|YES: Scammer Detected| C3["🚨 BOSS INTERCEPTED: OVERRIDE A<br/>Instant Non-Negotiable REJECT<br/>$150k Theft Averted • ECL Shield Raised"]
+    end
+
+    subgraph S4 ["📜 Level 4: The In-Memory Policy Citadel (Statutory RAG)"]
+        C2 -->|NO: Legitimate Human| D1["In-Memory Hybrid BM25 Spellbook<br/>Retrieves ECOA Reg B & Basel III Laws in <1ms"]
+        D1 --> D2{"Adverse Impact Ratio < 0.80?<br/>(Boss 3: Disparate Impact Trap)"}
+        D2 -->|Disparity Detected| D3["⚖️ FAIR LENDING EQUALIZER<br/>Overrides D1 and D2 Rebalance Demographics<br/>Maintains 80% Rule Without Lowering Credit Standards"]
+    end
+
+    subgraph S5 ["⚡ Level 5: The Fed Macro Shock Arena (Economic Solvency)"]
+        D2 -->|Equitable Flow| E1{"Federal Reserve Rate Shock Active?<br/>(Boss 2: +75 to +200 bps Lightning Bolt)"}
+        D3 --> E1
+        E1 -->|YES: Interest Spike!| E2["🛡️ DYNAMIC COUNTER SHIELD<br/>Override E Converts Borderline to COUNTER<br/>Amortized Terms + Down-Payment Buffer"]
+        E1 -->|NO: Stable Market| E3["Underwriting Policy Evaluation"]
+        E2 --> E3
+    end
+
+    subgraph S6 ["💰 Level 6: The Solvency Vault & Opportunity Loss Sentinel"]
+        E3 --> F1{"Is Applicant Super-Prime Profile?<br/>(FICO >= 720, Healthy DTI)"}
+        F1 -->|YES: Prime Borrower| F2["💎 APPROVE & BOOK LOAN<br/>Basel III Capital Ratio Protected (CAR >= 8.0%)<br/>Realized Net Interest Profit Captured"]
+        F1 -->|NO: High-Risk Defaulter| F3{"Erroneous Decline Blunder?<br/>(Boss 4: The Liam O'Connor Trap)"}
+        F3 -->|Manual Officer Typo Detected| F4["🔄 CRO SECOND-LOOK RADAR<br/>Recovers $4,130 Forfeited Interest Profit<br/>Converts Erroneous Reject into Prime Loan"]
+        F3 -->|Genuine Credit Risk| F5["📋 LEGAL ADVERSE ACTION NOTICE<br/>Auto-generates CFPB Form C-1<br/>+ Actionable Counterfactual Recourse Path"]
+    end
+
+    subgraph S7 ["🏆 Level 7: The Executive Victory Room"]
+        F2 --> G1["1-Click Power BI Victory Crystal<br/>Exports Enterprise Ledger & Basel III Solvency Dashboards"]
+        F4 --> G1
+        F5 --> G1
+    end
 ```
-   ========================================================================================
-   [ INCOMING RUSH HOUR: 5,000 APPLICANTS AT THE DIGITAL DOORS ]
-   ========================================================================================
-   Applicant #0001 (Prime Physician, FICO 780)  ───┐
-   Applicant #0002 (Gig Economy Driver, FICO 640) ──┼──► [ ASGI ASYNC EVENT LOOP ] ──► <5ms PARALLEL
-   Applicant #0003 (Fraud Ring Syndicate Bot)    ───┤     (3,000 Concurrent Coroutines)  DECISIONING
-   Applicant #5000 (Liam O'Connor, Super-Prime) ───┘
-   ========================================================================================
-```
-
-### The Plot
-You have just taken the reins as **Chief Underwriting Officer (CUO)** of *Nova Bank*, an ultra-high-frequency digital lender. The lobby doors have just swung open, and **5,000 loan applicants** are flooding your digital channels at the exact same millisecond. 
-
-In traditional legacy banking, this creates a week-long paper logjam. Loan officers scramble through file cabinets, borrowers wait days for emails, and human fatigue leads to multi-million-dollar mistakes.
-
-In **CreditLens**, your autonomous digital banking engine handles every single applicant **in parallel** through non-blocking asynchronous concurrency. But it's not just about speed — danger lurks in the crowd!
 
 ---
 
-### 👾 The Four Legendary Underwriting Boss Battles
+### 🕹️ Step-by-Step Gameplay Mechanics: Concept Breakdown
+
+#### 1. Level 1: The Parallel Concurrency Lobby (How Nova Bank Treats People in Parallel)
+* **The Challenge**: 5,000 borrowers hit the bank at once. In standard synchronous Python applications (e.g. standard Flask), request #5,000 has to wait in line until the first 4,999 have finished. That means hours of delay.
+* **The CreditLens Solution**: CreditLens utilizes an **Asynchronous Server Gateway Interface (ASGI)** powered by Starlette and Uvicorn. While one request waits for an external network byte, the single-threaded async event loop schedules coroutines concurrently. 
+* **The Result**: 1,000 to 3,000 active borrowers receive decisions simultaneously in **under 5 milliseconds**, completely eliminating queue lag.
+
+#### 2. Level 2: The ML Oracle & SHAP Laser Vision (Feature Attribution)
+* **The Challenge**: Credit scores (FICO) alone don't reveal the whole story. A borrower with a 720 FICO might have maxed-out credit cards, while a 640 FICO borrower might have a flawless 10-year repayment history.
+* **The CreditLens Solution**: An **XGBoost 2.0 Classifier** trained on 10 multivariate correlated features predicts the calibrated 12-month **Probability of Default (PD)**. Simultaneously, **TreeSHAP** casts "Laser Vision" on the calculation, exposing the exact numerical contribution of each feature (e.g. *"+14.2% default risk due to 88% revolving credit utilization"*).
+
+#### 3. Level 3: The Fraud Labyrinth (Defeating Boss 1: The Phantom Triplets)
+* **The Challenge**: Three fraudsters apply under completely different names and Social Security numbers, trying to borrow $50,000 each and disappear (*bust-out synthetic identity fraud*).
+* **The CreditLens Solution**: **NetworkX 3.0 Identity Graph Analysis**. Nodes represent applicants, while edges represent shared physical attributes: VoIP phone numbers, device IP subnets, and employer registration IDs.
+* **The Victory**: When the graph density connects the applicants into a synthetic fraud ring (`fraud_ring_score > 0.70`), **Hard Override A** fires instantly, executing a non-negotiable **FORCE REJECT** and saving the bank **$150,000**.
+
+#### 4. Level 4: The In-Memory Policy Citadel (Defeating Boss 3: The Disparate Impact Trap)
+* **The Challenge**: The Consumer Financial Protection Bureau (CFPB) audits your bank under the Equal Credit Opportunity Act (ECOA Reg B). If your approval rate for protected classes falls below 80% of the reference group, you face a **$50,000,000 regulatory penalty**.
+* **The CreditLens Solution**: An **In-Memory Hybrid BM25 Policy RAG Engine** indexes statutory credit laws and computes the **Adverse Impact Ratio (AIR)** in real time. If disparate impact is detected ($\text{AIR} < 0.80$), **Override D1 & D2** automatically rebalance approval thresholds without compromising credit risk.
+
+#### 5. Level 5: The Fed Macro Shock Arena (Defeating Boss 2: The +200 bps Shock Wave)
+* **The Challenge**: Mid-game, Federal Reserve Chairman Jerome Powell hikes interest rates by **+75 to +200 basis points**. Variable-rate loans instantly become more burdensome, and borderline borrowers risk defaulting overnight.
+* **The CreditLens Solution**: CreditLens dynamically activates **Post-Shock ECL Buffers**. Borderline applicants who would have defaulted under higher debt service costs are seamlessly converted from direct approvals into **COUNTER** offers (e.g., offering $18,000 instead of $25,000 with a mandatory 15% debt-service reserve).
+
+#### 6. Level 6: The Vault & Opportunity Loss Sentinel (Defeating Boss 4: The Liam O'Connor Trap)
+* **The Challenge**: A human officer or broken heuristic accidentally rejects a super-prime applicant like Liam O'Connor (FICO 777, 4.9% DTI) due to a typo (`Manual Reject: HIGH_DTI`). Traditional banks never track this; they only count loan defaults, completely ignoring the thousands in lost revenue.
+* **The CreditLens Solution**: The **Dual-Horizon Financial P&L Engine** calculates the **Opportunity Loss** of every rejection. It flags that rejecting Liam threw away **+$4,130 in risk-free interest profit**, automatically alerting the Chief Risk Officer (CRO) Second-Look queue to recapture the loan!
+* **Counterfactual Recourse**: If an applicant is genuinely rejected, CreditLens auto-generates a **CFPB Form C-1 Adverse Action Notice** with actionable math: *"Pay down credit cards by $3,200 to drop DTI below 38% for instant approval."*
+
+#### 7. Level 7: The Executive Victory Room (Power BI Victory Crystal)
+* **The Final Score**: The player exports the full episode ledger into **Microsoft Power BI** or CSV with a single click, visualizing 7-Factor Risk Radars, Basel III Solvency Margins ($\text{CAR} \ge 8.0\%$), and Net P&L.
+
+---
+
+### 👾 Summary of the Four Legendary Boss Battles
 
 | Boss Encounter | The Threat & Attack Vector | The CreditLens Defensive Weapon | Victorious Outcome |
 |:---|:---|:---|:---|
-| **Boss 1: The Phantom Triplets**<br>*(Synthetic Fraud Ring Syndicate)* | Three coordinated fraudsters apply simultaneously with distinct names, high fake credit scores, and different Social Security numbers, attempting to walk away with **$150,000** before disappearing. | **NetworkX Neural Linkage Forensics**<br>Scans identity graphs across applicant clusters in real time, detecting shared phone numbers, VoIP IP collisions, and employer ID density. | **100% Interception**<br>Fraud ring score spikes to `0.95+`. Hard Override A executes an instantaneous, non-negotiable **REJECT**. |
-| **Boss 2: The Macro Rate Shock Wave**<br>*(The Fed's +200 bps Lightning Bolt)* | Halfway through the underwriting session, the Federal Reserve unexpectedly hikes interest rates by **+75 to +200 basis points**. Variable-rate debt burdens explode, turning borderline borrowers into immediate default risks. | **Dynamic Post-Shock ECL Buffers**<br>The environment triggers an instant repricing cascade. The agent dynamically transitions borderline `APPROVE` decisions into amortized **COUNTER** offers with mandatory down-payments. | **Zero Capital Breach**<br>Portfolio Expected Credit Loss remains locked below the strict **5.0% ECL ceiling**, maintaining bank solvency. |
-| **Boss 3: The Disparate Impact Trap**<br>*(The CFPB Federal Regulatory Audit)* | The Consumer Financial Protection Bureau (CFPB) auditor arrives with a subpoena to inspect your lending distribution under the Equal Credit Opportunity Act (ECOA Reg B). If protected demographic approvals drop below 80% of reference approvals, you face a **$50,000,000 consent decree**. | **Automated Adverse Impact Ratio (AIR) Equalizer**<br>Continuously monitors the **Four-Fifths (80%) Rule**. If demographic disparity is detected, Override D1/D2 executes statutory fair-lending rebalancing without lowering credit standards. | **Full Statutory Immunity**<br>Adverse Impact Ratio maintained at $\ge 0.85$, with automated generation of CFPB Form C-1 adverse action notices. |
-| **Boss 4: The Liam O'Connor Blunder**<br>*(The Human False Decline Cost)* | A sleep-deprived junior loan officer mistakenly rejects Liam O'Connor — a super-prime borrower boasting a **777 FICO score** and an ultra-safe **4.9% DTI** — due to a manual input typo (`Manual Reject: HIGH_DTI`). | **AI Opportunity Loss & Second-Look Radar**<br>The Dual-Horizon Financial Engine flags that rejecting this high-yield prime profile surrendered **+$4,130 in pure risk-free interest profit**, routing the dossier to the CRO Second-Look Queue. | **Profit Recovery**<br>The bank captures the loan, recovers the opportunity loss, and protects customer lifetime relationship value. |
-
----
-
-### 🎒 The Player's Arsenal (Built-in Power-Ups)
-
-* 🛡️ **Basel III Solvency Armor**: Maintains Capital Adequacy Ratio ($CAR \ge 8.0\%$) and monitors Risk-Weighted Assets (RWA) in real time.
-* 🔍 **TreeSHAP Laser Vision**: Explains the exact mathematical dollar drivers behind every credit decision (FICO, DTI, revolving utilization, payment history).
-* 📜 **In-Memory Policy RAG Spellbook**: Hybrid BM25 retriever pulling statutory text from ECOA, Basel III, and bank credit manuals in **under 1 millisecond**.
-* 🎯 **Counterfactual Recourse Engine**: Gives rejected borrowers an exact mathematical recipe to get approved (*"Pay down revolving debt by $3,200 to drop DTI below 38%"*).
-* 💎 **1-Click Power BI Victory Crystal**: One click exports the complete institutional ledger into a boardroom-ready telemetry suite.
+| **Boss 1: The Phantom Triplets**<br>*(Synthetic Fraud Ring)* | 3 coordinated fraudsters apply with distinct fake names and stolen credentials to steal **$150,000**. | **NetworkX Neural Linkage Forensics**<br>Scans identity graphs across applicant clusters for shared phone numbers, VoIP IP collisions, and shell company IDs. | **100% Interception**<br>Fraud ring score spikes to `0.95+`. Hard Override A executes an instantaneous **REJECT**. |
+| **Boss 2: The Macro Rate Shock Wave**<br>*(The Fed's +200 bps Hike)* | The Federal Reserve unexpectedly hikes rates by **+75 to +200 bps**, exploding variable borrower debt burdens. | **Dynamic Post-Shock ECL Buffers**<br>The environment triggers an instant repricing cascade, converting borderline approvals into amortized **COUNTER** offers. | **Zero Capital Breach**<br>Portfolio Expected Credit Loss remains locked below the strict **5.0% ECL ceiling**. |
+| **Boss 3: The Disparate Impact Trap**<br>*(CFPB Federal Audit)* | Regulatory audit inspects approval parity under ECOA Reg B. If protected approvals drop below 80%, bank faces a **$50M consent decree**. | **Automated Adverse Impact Ratio (AIR) Equalizer**<br>Continuously monitors the **Four-Fifths (80%) Rule**. If disparity is detected, Override D1/D2 rebalances approvals. | **Full Statutory Immunity**<br>Adverse Impact Ratio maintained at $\ge 0.85$, with automated generation of CFPB Form C-1 adverse action notices. |
+| **Boss 4: The Liam O'Connor Blunder**<br>*(The Human False Decline Cost)* | A tired loan officer mistakenly rejects Liam O'Connor — a super-prime borrower (FICO 777, 4.9% DTI) — due to a manual input typo. | **AI Opportunity Loss & Second-Look Radar**<br>Flags that rejecting this prime profile surrendered **+$4,130 in pure risk-free interest profit**, routing to CRO Second-Look Queue. | **Profit Recovery**<br>The bank captures the loan, recovers the opportunity loss, and protects customer lifetime value. |
 
 ---
 
@@ -94,7 +153,9 @@ flowchart TB
         Imb --> XGB["XGBoost 2.0 Classifier<br/>(Calibrated Default Probabilities)"]
         Imb --> NetX["NetworkX 3.0 Graph<br/>(Synthetic Fraud Ring Linkage)"]
         XGB --> SHAP["TreeSHAP Explainer<br/>(Per-Applicant Attributions)"]
-        NetX & SHAP & XGB --> Parquet[("loans.parquet<br/>5,000 Borrowers / 35 Features")]
+        NetX --> Parquet[("loans.parquet<br/>5,000 Borrowers / 35 Features")]
+        SHAP --> Parquet
+        XGB --> Parquet
     end
 
     subgraph CoreEngine ["2. CreditLens Non-Blocking Core Engine (engine.py)"]
@@ -138,30 +199,35 @@ To eliminate reliance on expensive, fragile cloud LLM APIs, CreditLens implement
 
 ```mermaid
 flowchart TD
-    Start([Applicant Dossier Arrives]) --> T1Check{Tier 1 Available?}
+    Start(["Applicant Dossier Arrives"]) --> T1Check{"Tier 1 Available?"}
     
-    T1Check -->|Default: Instant Execution| NeuroSymbolic[Run Calibrated XGBoost + TreeSHAP]
+    T1Check -->|Default: Instant Execution| NeuroSymbolic["Run Calibrated XGBoost + TreeSHAP"]
     
-    NeuroSymbolic --> FraudGate{Fraud Ring Score > 0.70<br/>OR Identifier Collisions?}
-    FraudGate -->|YES: Fraud Attack!| ForceRejectA[OVERRIDE A: FORCE REJECT<br/>ECL Shield Activated]
+    NeuroSymbolic --> FraudGate{"Fraud Ring Score > 0.70<br/>OR Identifier Collisions?"}
+    FraudGate -->|YES: Fraud Attack!| ForceRejectA["OVERRIDE A: FORCE REJECT<br/>ECL Shield Activated"]
     
-    FraudGate -->|NO| XGBCutoff{XGB Default Prob > 0.62<br/>(Post-Shock: > 0.47)?}
-    XGBCutoff -->|YES: Excessive Risk| ForceRejectB[OVERRIDE B: FORCE REJECT<br/>No Counter Allowed]
+    FraudGate -->|NO| XGBCutoff{"XGB Default Prob > 0.62<br/>(Post-Shock: > 0.47)?"}
+    XGBCutoff -->|YES: Excessive Risk| ForceRejectB["OVERRIDE B: FORCE REJECT<br/>No Counter Allowed"]
     
-    XGBCutoff -->|NO| ECLBudget{ECL Budget Consumption<br/>> 60% / 80% / 95%?}
-    ECLBudget -->|YES: Budget Depleted| ForceRejectC[OVERRIDE C: ECL GUARD<br/>Tiered Rejection Threshold]
+    XGBCutoff -->|NO| ECLBudget{"ECL Budget Consumption<br/>> 60% / 80% / 95%?"}
+    ECLBudget -->|YES: Budget Depleted| ForceRejectC["OVERRIDE C: ECL GUARD<br/>Tiered Rejection Threshold"]
     
-    ECLBudget -->|NO| FairnessCheck{Disparate Impact Gap<br/>|Ref Rate - Prot Rate| > 0.12?}
-    FairnessCheck -->|Protected Under-Approved| OverrideD1[OVERRIDE D1: FAIRNESS RESCUE<br/>Flip Borderline to APPROVE]
-    FairnessCheck -->|Protected Over-Approved| OverrideD2[OVERRIDE D2: FAIRNESS REBALANCE<br/>Downgrade Borderline to COUNTER]
+    ECLBudget -->|NO| FairnessCheck{"Disparate Impact Detected?<br/>Approval Gap > 12%"}
+    FairnessCheck -->|Protected Under-Approved| OverrideD1["OVERRIDE D1: FAIRNESS RESCUE<br/>Flip Borderline to APPROVE"]
+    FairnessCheck -->|Protected Over-Approved| OverrideD2["OVERRIDE D2: FAIRNESS REBALANCE<br/>Downgrade Borderline to COUNTER"]
     
-    FairnessCheck -->|Fairness In Bounds| ShockCheck{Post-Macro Shock Active<br/>AND XGB > 0.30?}
-    ShockCheck -->|YES| OverrideE[OVERRIDE E: MACRO REPRICE<br/>Convert to COUNTER]
+    FairnessCheck -->|Fairness In Bounds| ShockCheck{"Post-Macro Shock Active<br/>AND XGB > 0.30?"}
+    ShockCheck -->|YES| OverrideE["OVERRIDE E: MACRO REPRICE<br/>Convert to COUNTER"]
     
-    ShockCheck -->|NO| PrimeApprove[APPROVE<br/>Execute Basel III Capital Booking]
+    ShockCheck -->|NO| PrimeApprove["APPROVE<br/>Execute Basel III Capital Booking"]
 
-    ForceRejectA & ForceRejectB & ForceRejectC --> AdverseNotice[Trigger ECOA Adverse Action Notice]
-    OverrideD1 & OverrideD2 & OverrideE & PrimeApprove --> DualPnL[Compute Realized & Projected P&L]
+    ForceRejectA --> AdverseNotice["Trigger ECOA Adverse Action Notice"]
+    ForceRejectB --> AdverseNotice
+    ForceRejectC --> AdverseNotice
+    OverrideD1 --> DualPnL["Compute Realized and Projected PnL"]
+    OverrideD2 --> DualPnL
+    OverrideE --> DualPnL
+    PrimeApprove --> DualPnL
 ```
 
 ---
@@ -271,7 +337,7 @@ $$\text{NPL Ratio} = \frac{\text{Defaulted Loan Volume}}{\text{Total Portfolio O
 
 Unlike simplistic simulators that only measure raw reward points, CreditLens maintains a double-entry financial ledger capturing both **realized cashflows** and **long-term macroeconomic yields**:
 
-$$\text{Total Economic Value} = \text{Realized P\&L} + \text{Default Loss Avoidance} - \text{False Decline Opportunity Loss}$$
+$$\text{Total Economic Value} = \text{Realized Net Profit or Loss} + \text{Default Loss Avoidance} - \text{False Decline Opportunity Loss}$$
 
 1. **Realized Interest Profit**:
    
@@ -279,7 +345,7 @@ $$\text{Net Interest Margin} = \text{Loan Amount} \times \text{Interest Rate} \t
 
 2. **Default Losses Avoided**:
    
-$$\text{Loss Prevented} = \sum_{\text{Fraud \& High-Risk Rejects}} (\text{Loan Amount} \times \text{LGD})$$
+$$\text{Loss Prevented} = \sum_{\text{Fraud and High-Risk Rejects}} (\text{Loan Amount} \times \text{LGD})$$
 
 3. **False Decline Opportunity Cost (The Liam O'Connor Scenario)**:
    
