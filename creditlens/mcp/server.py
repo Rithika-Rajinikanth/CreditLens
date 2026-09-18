@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Optional
 
 try:
     from mcp.server.mcpserver import MCPServer
@@ -36,17 +35,14 @@ except ImportError:
             def run(self, transport: str = "stdio"):
                 pass
 
+from creditlens.ai.explainer import get_credit_explainer
+from creditlens.ai.rag.retriever import get_policy_retriever
+from creditlens.ai.tri_tier_engine import get_underwriter
 from creditlens.models import (
-    ActionType,
     DemographicGroup,
     LoanObservation,
     LoanPurpose,
-    RejectReason,
-    UnderwritingAction,
 )
-from creditlens.ai.tri_tier_engine import get_underwriter
-from creditlens.ai.explainer import get_credit_explainer
-from creditlens.ai.rag.retriever import get_policy_retriever
 
 # Initialize MCPServer (MCP 2.x native)
 mcp = MCPServer("CreditLens Underwriting Platform")
@@ -200,14 +196,14 @@ def generate_adverse_action_notice(
         "         (Equal Credit Opportunity Act - 12 CFR § 1002.9)        ",
         "=================================================================",
         f"Applicant Reference ID: {applicant_id}",
-        f"Notice Date: 2026-09-15 | Creditor: CreditLens Financial Bank, N.A.",
+        "Notice Date: 2026-09-15 | Creditor: CreditLens Financial Bank, N.A.",
         "",
         "DESCRIPTION OF ACTION TAKEN:",
-        f"Your application for an unsecured credit extension has been declined.",
+        "Your application for an unsecured credit extension has been declined.",
         "",
         "PRINCIPAL REASON(S) FOR ADVERSE ACTION (12 CFR § 1002.9(b)(2)):",
         f"  1. {reason_code.replace('_', ' ').title()}",
-        f"  2. Total obligations relative to verified disposable income.",
+        "  2. Total obligations relative to verified disposable income.",
         "",
         "CREDIT SCORING DISCLOSURE (Fair Credit Reporting Act § 609(g)):",
         f"  - Credit Score Used: {fico_score} (FICO Score 8 range 300 - 850)",

@@ -23,7 +23,6 @@ from creditlens.models import (
     TaskConfig,
 )
 
-
 # ─────────────────────────────────────────────
 # Open-interval clamp — the single contract fix
 # ─────────────────────────────────────────────

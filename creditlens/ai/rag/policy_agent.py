@@ -7,8 +7,8 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Optional
 
-from creditlens.models import ActionType, LoanObservation, RejectReason, UnderwritingAction
 from creditlens.ai.rag.retriever import PolicyChunk, get_policy_retriever
+from creditlens.models import ActionType, LoanObservation, UnderwritingAction
 
 
 class PolicyAgent:
@@ -75,23 +75,23 @@ class PolicyAgent:
             citation_text = f"Per {top_chunk.title} - {top_chunk.section}:\n{top_chunk.content.strip()}"
 
         lines = [
-            f"=== INSTITUTIONAL CREDIT COMMITTEE MEMORANDUM ===",
+            "=== INSTITUTIONAL CREDIT COMMITTEE MEMORANDUM ===",
             f"Applicant ID: {obs.applicant_id} | Episode Step: {obs.step_number}",
             f"Decision: {action.action_type.value if hasattr(action.action_type, 'value') else action.action_type}",
             f"Decision Rationale: {action.reasoning or 'Standard underwriting review.'}",
-            f"--------------------------------------------------",
-            f"FINANCIAL PROFILE:",
+            "--------------------------------------------------",
+            "FINANCIAL PROFILE:",
             f"  - FICO Score: {obs.fico_score}",
             f"  - Income: ${obs.income:,.0f} | Requested Loan: ${obs.loan_amount:,.0f}",
             f"  - Debt-to-Income (DTI): {obs.dti_ratio:.1%}",
             f"  - Revolving Utilization: {obs.credit_utilization:.1%}",
             f"  - XGBoost Default Probability: {obs.xgb_default_prob:.1%}",
             f"  - Fraud Ring Anomaly Score: {obs.fraud_ring_score:.1%}",
-            f"--------------------------------------------------",
-            f"POLICY GROUNDING & COMPLIANCE CITATION:",
+            "--------------------------------------------------",
+            "POLICY GROUNDING & COMPLIANCE CITATION:",
             f"{citation_text or 'Underwriting guidelines verified.'}",
-            f"Regulatory Basis: CFPB Regulation B (12 CFR § 1002.9) / Basel III F-IRB Standard",
-            f"==================================================",
+            "Regulatory Basis: CFPB Regulation B (12 CFR § 1002.9) / Basel III F-IRB Standard",
+            "==================================================",
         ]
         return "\n".join(lines)
 
@@ -112,7 +112,7 @@ class PolicyAgent:
 
         # Header
         lines = [
-            f"### 🤖 AI Underwriting Copilot & Policy Synthesis",
+            "### 🤖 AI Underwriting Copilot & Policy Synthesis",
             f"**Inquiry**: *{query}*",
         ]
 
@@ -190,13 +190,13 @@ class PolicyAgent:
                 f"- **Super-Prime Tier (FICO 750+)**: Maximum allowable loan is **$100,000** unsecured. Approved at requested amount fraction 1.0 (allowable DTI ceiling up to 48.0%). For a ${target_income:,.0f} income, debt-service capacity typically caps a standard term loan around **$50,000 to $65,000** unless backed by collateral."
             )
             lines.append(
-                f"- **Prime Tier (FICO 680–749)**: Maximum allowable loan is **$75,000** unsecured. Standard approval fraction 0.90 to 1.0 if aggregate DTI ≤ 40.0%."
+                "- **Prime Tier (FICO 680–749)**: Maximum allowable loan is **$75,000** unsecured. Standard approval fraction 0.90 to 1.0 if aggregate DTI ≤ 40.0%."
             )
             lines.append(
-                f"- **Near-Prime Tier (FICO 620–679)**: Maximum allowable loan is **$50,000**. Unconditional approvals require DTI ≤ 38.0% and utilization ≤ 50.0%; higher ratios require a counteroffer (fraction 0.70–0.80, rate delta +1.00% to +1.50%)."
+                "- **Near-Prime Tier (FICO 620–679)**: Maximum allowable loan is **$50,000**. Unconditional approvals require DTI ≤ 38.0% and utilization ≤ 50.0%; higher ratios require a counteroffer (fraction 0.70–0.80, rate delta +1.00% to +1.50%)."
             )
             lines.append(
-                f"- **Subprime Tier (FICO < 620)**: Hard portfolio ceiling of **$25,000**. FICO < 580 is a mandatory statutory decline (`LOW_CREDIT_SCORE`); FICO 580–619 allows maximum counteroffer fraction of 0.65."
+                "- **Subprime Tier (FICO < 620)**: Hard portfolio ceiling of **$25,000**. FICO < 580 is a mandatory statutory decline (`LOW_CREDIT_SCORE`); FICO 580–619 allows maximum counteroffer fraction of 0.65."
             )
             lines.append("")
             lines.append("##### 2. Monthly Debt Service Capacity Thresholds:")

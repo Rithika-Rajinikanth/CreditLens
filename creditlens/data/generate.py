@@ -12,6 +12,7 @@ import warnings
 from pathlib import Path
 from typing import List, Tuple
 
+import joblib
 import networkx as nx
 import numpy as np
 import pandas as pd
@@ -23,7 +24,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
-import joblib
 
 warnings.filterwarnings("ignore")
 

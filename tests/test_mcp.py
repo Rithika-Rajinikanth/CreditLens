@@ -6,12 +6,12 @@ Tests exposed MCP tools and policy resources.
 import json
 
 from creditlens.mcp.server import (
-    evaluate_applicant,
-    query_credit_policy,
     compute_counterfactual_recourse,
+    evaluate_applicant,
     generate_adverse_action_notice,
-    get_underwriting_policy_resource,
     get_regulations_resource,
+    get_underwriting_policy_resource,
+    query_credit_policy,
 )
 
 

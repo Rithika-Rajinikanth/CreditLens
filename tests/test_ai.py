@@ -4,10 +4,10 @@ Unit tests for Tri-Tier AI Reasoning, XAI Explainer, and Multi-Policy Benchmark.
 
 import pytest
 
-from creditlens.models import ActionType, DemographicGroup, LoanObservation, LoanPurpose
-from creditlens.ai.tri_tier_engine import get_underwriter
-from creditlens.ai.explainer import get_credit_explainer
 from creditlens.ai.benchmark import MultiPolicyBenchmark
+from creditlens.ai.explainer import get_credit_explainer
+from creditlens.ai.tri_tier_engine import get_underwriter
+from creditlens.models import DemographicGroup, LoanObservation, LoanPurpose
 
 
 @pytest.fixture

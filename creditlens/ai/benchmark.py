@@ -10,10 +10,10 @@ Compares 4 distinct decision paradigms across financial & fairness metrics:
 
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any, Dict
 
-from creditlens.models import ActionType, LoanObservation, RejectReason, UnderwritingAction
 from creditlens.ai.tri_tier_engine import get_underwriter
+from creditlens.models import ActionType, LoanObservation, RejectReason, UnderwritingAction
 
 
 class MultiPolicyBenchmark:

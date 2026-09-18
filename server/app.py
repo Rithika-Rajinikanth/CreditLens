@@ -27,10 +27,26 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from prometheus_client import CONTENT_TYPE_LATEST, Counter, Gauge, Histogram, generate_latest
 from pydantic import BaseModel
-from prometheus_client import Counter, Histogram, Gauge, generate_latest, CONTENT_TYPE_LATEST
 from starlette.responses import Response
 
+from creditlens.ai.explainer import get_credit_explainer
+from creditlens.ai.rag.policy_agent import get_policy_agent
+from creditlens.ai.rag.retriever import get_policy_retriever
+from creditlens.ai.tri_tier_engine import get_underwriter
+from creditlens.analytics import (
+    FinancialEngine,
+    create_pnl_forecast_chart,
+    create_seven_factors_chart,
+    create_solvency_gauge,
+    create_tier_impact_chart,
+    export_power_bi_dataset,
+    get_bank_health_engine,
+)
+from creditlens.compliance.adverse_action import get_adverse_action_generator
+from creditlens.compliance.fair_lending import get_fair_lending_auditor
+from creditlens.env.engine import TASK_CONFIGS, CreditLensEnv
 from creditlens.models import (
     ActionType,
     LoanObservation,
@@ -38,29 +54,7 @@ from creditlens.models import (
     RequestField,
     UnderwritingAction,
 )
-from creditlens.env.engine import CreditLensEnv, TASK_CONFIGS
 from creditlens.tasks.graders import grade_episode
-from creditlens.ai.tri_tier_engine import get_underwriter
-from creditlens.ai.explainer import get_credit_explainer
-from creditlens.ai.rag.policy_agent import get_policy_agent
-from creditlens.ai.rag.retriever import get_policy_retriever
-from creditlens.compliance.adverse_action import get_adverse_action_generator
-from creditlens.compliance.fair_lending import get_fair_lending_auditor
-from creditlens.compliance.basel import get_basel_calculator
-from creditlens.analytics import (
-    BankHealthEngine,
-    FinancialEngine,
-    PortfolioDataHub,
-    PredictiveForecaster,
-    StrategicRecommender,
-    WhatIfSimulator,
-    create_pnl_forecast_chart,
-    create_tier_impact_chart,
-    create_seven_factors_chart,
-    create_solvency_gauge,
-    export_power_bi_dataset,
-    get_bank_health_engine,
-)
 
 # ══════════════════════════════════════════════════════════════════════════
 # SECTION 1 — Observability & Prometheus Metrics
@@ -390,7 +384,7 @@ def _generate_network_graph_svg(obs: LoanObservation) -> str:
     emp_name = obs.employer_name or "Verified Corporate Employer"
     phone_val = obs.phone or "+1 (555) 0192"
     bank_bal = f"${obs.bank_balance:,.0f}" if obs.bank_balance else "$14,500"
-    
+
     syndicate_card = ""
     syndicate_link = ""
     if is_fraud_risk:
@@ -405,11 +399,11 @@ def _generate_network_graph_svg(obs: LoanObservation) -> str:
         <line x1="270" y1="122" x2="270" y2="132" stroke="#ef4444" stroke-width="2" stroke-dasharray="3"/>
         <line x1="170" y1="42" x2="195" y2="140" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3"/>
         """
-    
+
     trust_label = (
         f'<span style="color:#ef4444;font-weight:700;">🚨 HIGH FRAUD RISK ({obs.fraud_ring_score:.1%}): Shared identity & device graph collision</span>'
         if is_fraud_risk else
-        f'<span style="color:#10b981;font-weight:700;">🛡️ IDENTITY VERIFIED: Isolated contact & employment graph (0 collisions)</span>'
+        '<span style="color:#10b981;font-weight:700;">🛡️ IDENTITY VERIFIED: Isolated contact & employment graph (0 collisions)</span>'
     )
 
     return f"""
@@ -597,8 +591,8 @@ def _applicant_policy_grounding(obs: LoanObservation) -> str:
                 </details>
             </div>
             """
-    except Exception as e:
-        excerpts_html = f"<p style='color:#94a3b8;font-size:0.8rem;'>Policy grounding active. (Manual inspection available)</p>"
+    except Exception:
+        excerpts_html = "<p style='color:#94a3b8;font-size:0.8rem;'>Policy grounding active. (Manual inspection available)</p>"
 
     return f"""
 <div style="background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px;margin-top:12px;">
@@ -1189,10 +1183,9 @@ def _fresh():
 
 
 def _start_episode(task_id: str, seed_mode: str, state: dict):
-    import random
 
     task_id = task_id if task_id in TASK_CONFIGS else "easy"
-    
+
     # Dynamic seed selection
     if "Random" in seed_mode or seed_mode == "random":
         chosen_seed = random.randint(100, 999999)

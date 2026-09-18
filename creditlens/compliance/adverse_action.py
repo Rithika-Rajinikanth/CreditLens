@@ -7,10 +7,10 @@ pursuant to 12 CFR § 1002.9 and Fair Credit Reporting Act (FCRA) § 609(g).
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
 from datetime import date
+from typing import Any, Dict, List, Optional
 
-from creditlens.models import LoanObservation, RejectReason
+from creditlens.models import LoanObservation
 
 
 class AdverseActionNoticeGenerator:

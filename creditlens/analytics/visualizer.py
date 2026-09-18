@@ -13,10 +13,9 @@ from __future__ import annotations
 
 from pathlib import Path
 from typing import Any, Dict, List, Optional
-import pandas as pd
-import numpy as np
-import plotly.graph_objects as go
 
+import pandas as pd
+import plotly.graph_objects as go
 
 DARK_LAYOUT = dict(
     paper_bgcolor="#0f172a",

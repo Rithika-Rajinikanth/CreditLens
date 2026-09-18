@@ -5,10 +5,10 @@ Tests ECOA Adverse Action Form C-1, Fair Lending 80% Rule Auditor, and Basel III
 
 import pytest
 
-from creditlens.models import DemographicGroup, EpisodeState, LoanObservation, LoanPurpose
 from creditlens.compliance.adverse_action import get_adverse_action_generator
-from creditlens.compliance.fair_lending import get_fair_lending_auditor
 from creditlens.compliance.basel import get_basel_calculator
+from creditlens.compliance.fair_lending import get_fair_lending_auditor
+from creditlens.models import DemographicGroup, EpisodeState, LoanObservation, LoanPurpose
 
 
 @pytest.fixture

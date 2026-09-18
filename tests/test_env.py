@@ -9,13 +9,12 @@ import pytest
 
 pytest.importorskip("gymnasium", reason="gymnasium is required for environment tests")
 
-from creditlens.env.engine import CreditLensEnv, TASK_CONFIGS
+from creditlens.env.engine import TASK_CONFIGS, CreditLensEnv
 from creditlens.models import (
     ActionType,
     RejectReason,
     UnderwritingAction,
 )
-
 
 # ─────────────────────────────────────────────
 # Environment Tests

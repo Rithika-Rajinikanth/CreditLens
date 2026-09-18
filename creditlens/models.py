@@ -5,11 +5,11 @@ All types are fully typed and validated.
 
 from __future__ import annotations
 
+import uuid
 from enum import Enum
 from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, ConfigDict, Field, field_validator
-import uuid
 
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 # ---------------------------------------------------------------------------
 # Enums

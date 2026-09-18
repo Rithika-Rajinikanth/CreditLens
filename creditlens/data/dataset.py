@@ -4,10 +4,10 @@ Loads loans.parquet into memory once at startup for fast row access.
 """
 from __future__ import annotations
 
+import random
 from functools import lru_cache
 from pathlib import Path
 from typing import Optional
-import random
 
 import pandas as pd
 from loguru import logger
@@ -49,7 +49,7 @@ def sample_applicants(
     combined = pd.concat([fraud_sample, clean_sample]).sample(frac=1, random_state=seed).reset_index(drop=True)
     # Assign realistic applicant identifiers and banking dossier fields
     combined = combined.copy()
-    
+
     names_pool = [
         "Priya Sharma", "Marcus Vance", "Elena Rostova", "Sophia Chen",
         "David K. Miller", "Carlos Mendoza", "Aisha Al-Mansoor", "Liam O'Connor",
@@ -82,22 +82,22 @@ def sample_applicants(
         row_seed = (seed or 42) + i * 17
         app_id = f"EP_{i:03d}" if seed == 42 else f"APP-{(seed or 100) % 9000 + 1000}-{i+1:02d}"
         applicant_ids.append(app_id)
-        
+
         name = names_pool[row_seed % len(names_pool)]
         applicant_names.append(name)
-        
+
         masked_id = f"AADHAR-XXXX-XXXX-{(row_seed * 37) % 9000 + 1000}"
         masked_ids.append(masked_id)
-        
+
         clean_name = name.lower().replace(" ", ".").replace("'", "").replace(".", "")
         emails.append(f"{clean_name}@verified-identity.org")
-        
+
         emp_name, sector, emp_type, layoff = employers_pool[row_seed % len(employers_pool)]
         employer_names.append(emp_name)
         work_sectors.append(sector)
         employment_types.append(emp_type)
         layoff_risks.append(layoff)
-        
+
         inc = float(combined.iloc[i].get("income", 60000.0))
         # Realistic liquid buffer: 1.5 to 5 months of income
         bal = round(max(3500.0, (inc / 12) * (1.5 + ((row_seed % 35) / 10))), 2)

@@ -3,7 +3,6 @@ Unit tests for CreditLens Graders (Easy, Medium, Hard).
 Verifies strict open-interval contract (score in [0.01, 0.99]), F1 scores, and gate penalties.
 """
 
-import pytest
 
 from creditlens.models import (
     ActionType,

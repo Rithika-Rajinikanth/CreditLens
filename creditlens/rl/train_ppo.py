@@ -15,7 +15,7 @@ from pathlib import Path
 import optuna
 from loguru import logger
 from stable_baselines3 import PPO
-from stable_baselines3.common.callbacks import EvalCallback, CheckpointCallback
+from stable_baselines3.common.callbacks import CheckpointCallback, EvalCallback
 from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.monitor import Monitor
 

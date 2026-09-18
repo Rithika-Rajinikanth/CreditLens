@@ -9,6 +9,7 @@ AIR < 0.80 indicates potential disparate impact.
 from __future__ import annotations
 
 from typing import Any, Dict, Optional
+
 from creditlens.models import EpisodeState
 
 

@@ -17,15 +17,14 @@ from typing import Any, Dict, List, Optional, Tuple
 import httpx
 from loguru import logger
 
+from creditlens.ai.rag.policy_agent import get_policy_agent
 from creditlens.models import (
     ActionType,
     DemographicGroup,
     LoanObservation,
     RejectReason,
-    RequestField,
     UnderwritingAction,
 )
-from creditlens.ai.rag.policy_agent import get_policy_agent
 
 
 class TriTierUnderwriter:

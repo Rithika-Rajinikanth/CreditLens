@@ -6,6 +6,7 @@ Tests all competing signals: Base quality, ECL, Fairness, Fraud, Step cost, Info
 import pandas as pd
 import pytest
 
+from creditlens.env.reward import RewardEngine
 from creditlens.models import (
     ActionType,
     ApplicantRecord,
@@ -15,7 +16,6 @@ from creditlens.models import (
     TaskConfig,
     UnderwritingAction,
 )
-from creditlens.env.reward import RewardEngine
 
 
 @pytest.fixture

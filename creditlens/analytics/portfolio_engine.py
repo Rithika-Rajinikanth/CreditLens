@@ -10,13 +10,13 @@ actionable AI Chief Risk Officer (CRO) recommendations.
 from __future__ import annotations
 
 import json
-import math
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
-import pandas as pd
-import numpy as np
+from typing import Any, Dict, List, Optional
 
-from creditlens.models import ActionType, LoanObservation, UnderwritingAction
+import numpy as np
+import pandas as pd
+
+from creditlens.models import LoanObservation, UnderwritingAction
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 LEDGER_FILE = DATA_DIR / "historical_ledger.json"

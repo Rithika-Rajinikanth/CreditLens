@@ -7,7 +7,7 @@ Also exposes Prometheus metrics at /metrics.
 from __future__ import annotations
 
 import time
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
 import uvicorn
 from fastapi import FastAPI, HTTPException
@@ -17,8 +17,8 @@ from prometheus_client import Counter, Gauge, Histogram, generate_latest
 from pydantic import BaseModel
 from starlette.responses import PlainTextResponse
 
-from creditlens.env.engine import CreditLensEnv, TASK_CONFIGS
-from creditlens.models import LoanObservation, StepResult, UnderwritingAction, EpisodeState
+from creditlens.env.engine import TASK_CONFIGS, CreditLensEnv
+from creditlens.models import EpisodeState, LoanObservation, StepResult, UnderwritingAction
 from creditlens.tasks.graders import grade_episode
 
 # ─────────────────────────────────────────────

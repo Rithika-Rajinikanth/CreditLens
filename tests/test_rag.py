@@ -3,9 +3,15 @@ Unit tests for the Institutional Policy & Regulatory RAG Engine.
 Tests document indexing, hybrid BM25 retrieval, and policy-grounded credit memos.
 """
 
-from creditlens.models import ActionType, DemographicGroup, LoanObservation, LoanPurpose, UnderwritingAction
-from creditlens.ai.rag.retriever import get_policy_retriever
 from creditlens.ai.rag.policy_agent import get_policy_agent
+from creditlens.ai.rag.retriever import get_policy_retriever
+from creditlens.models import (
+    ActionType,
+    DemographicGroup,
+    LoanObservation,
+    LoanPurpose,
+    UnderwritingAction,
+)
 
 
 class TestPolicyRAG:

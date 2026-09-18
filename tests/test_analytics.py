@@ -3,13 +3,11 @@ Unit tests for the Predictive Bank Health, Portfolio P&L & Strategic Recommender
 """
 
 import os
-from pathlib import Path
+
 import pytest
-from creditlens.models import ActionType, DemographicGroup, LoanObservation, LoanPurpose, UnderwritingAction
+
 from creditlens.analytics.portfolio_engine import (
-    BankHealthEngine,
     FinancialEngine,
-    PortfolioDataHub,
     PredictiveForecaster,
     StrategicRecommender,
     WhatIfSimulator,
@@ -21,6 +19,13 @@ from creditlens.analytics.visualizer import (
     create_solvency_gauge,
     create_tier_impact_chart,
     export_power_bi_dataset,
+)
+from creditlens.models import (
+    ActionType,
+    DemographicGroup,
+    LoanObservation,
+    LoanPurpose,
+    UnderwritingAction,
 )
 
 
@@ -149,13 +154,13 @@ class TestAnalyticsEngine:
             assert "Action_Taken" in content
 
     def test_server_analytics_callbacks(self, tmp_path):
-        from server.app import (
-            _render_analytics_tab_content,
-            _handle_what_if,
-            _handle_pbi_export,
-            _portfolio_html,
-        )
         from creditlens.env.engine import CreditLensEnv
+        from server.app import (
+            _handle_pbi_export,
+            _handle_what_if,
+            _portfolio_html,
+            _render_analytics_tab_content,
+        )
 
         env = CreditLensEnv(task_id="easy")
         env.reset(seed=42)
