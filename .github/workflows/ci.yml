@@ -1,0 +1,55 @@
+name: CreditLens Enterprise CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgomp1
+
+      - name: Install PyTorch CPU
+        run: |
+          pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Install Dependencies
+        run: |
+          pip install -e .
+          pip install ruff pytest pytest-cov
+
+      - name: Generate Dataset & Model
+        run: |
+          python -m creditlens.data.generate
+
+      - name: Code Quality & Lint (Ruff)
+        run: |
+          ruff check .
+
+      - name: Run Pytest Test Suite
+        run: |
+          pytest tests/ -v --tb=short
+
+      - name: Run Concurrency Stress Benchmark
+        run: |
+          python tests/perf/test_api_stress.py

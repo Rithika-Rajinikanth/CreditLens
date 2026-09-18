@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual envs
+.venv/
+venv/
+env/
+ENV/
+
+# Data & models & artifacts
+creditlens/data/loans.parquet
+creditlens/data/historical_ledger.json
+creditlens/data/power_bi_portfolio_export.csv
+artifacts/
+*.zip
+*.tar.gz
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing & Linting
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Submodule cleanup
+cleaned-repo/
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/*.ipynb
+
+# Logs
+*.log
+tensorboard_logs/
+
+# OS
+.DS_Store
+Thumbs.db
