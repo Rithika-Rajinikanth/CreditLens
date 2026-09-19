@@ -41,6 +41,7 @@ dependencies = [
     "gradio>=4.0.0",
     "openai>=1.0.0",
     "mcp>=1.0.0",
+    "plotly>=5.18.0",
     "selenium>=4.20.0",
     "webdriver-manager>=4.0.0",
 ]

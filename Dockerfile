@@ -46,6 +46,8 @@ RUN pip install --no-cache-dir \
     python-dotenv>=1.0.0 \
     loguru>=0.7.0 \
     rich>=13.0.0 \
+    plotly>=5.18.0 \
+    mcp>=1.0.0 \
     joblib>=1.3.0 \
     pytest>=8.0.0
 
